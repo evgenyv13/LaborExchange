@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import './SignUp.styles.css';
 
 export default class SignUp extends Component {
     render() {
