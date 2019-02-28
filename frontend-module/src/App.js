@@ -1,26 +1,25 @@
 import React, { Component } from 'react';
-import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import SignIn from "./components/Authinfication/SignIn/SignIn";
-import SignUp from "./components/Authinfication/SignUp/SignUp";
-import Landing from "./components/Landing/Landing";
-import MyPage from "./components/MyPage/MyPage";
+import './App.css';
+import SignIn from './components/Authentication/SignIn/SignIn';
+import SignUp from './components/Authentication/SignUp/SignUp';
+import Landing from './components/Landing/Landing';
+import Account from './components/Routing/Account/Account';
+import './App.css';
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
-        <Router>
-            <div>
-                <div className="open-pages-background">
-                    <Route exact path="/" component={Landing} />
-                    <Route path="/sign-in" component={SignIn} />
-                    <Route path="/sign-up" component={SignUp} />
-                    <Route path="/my-page" component={MyPage} />
-                </div>
-            </div>
-        </Router>
+      <Router>
+        <div>
+          <div className="open-pages-background">
+            <Route exact path="/" component={Landing} />
+            <Route path="/signin" component={SignIn} />
+            <Route path="/signup" component={SignUp} />
+          </div>
+          <Route path="/account" component={Account} />
+        </div>
+      </Router>
     );
   }
 }
-
-export default App;

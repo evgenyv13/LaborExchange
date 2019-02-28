@@ -11,13 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
-@Controller
+@RestController
 public class AnonController {
     @Autowired
     private JwtGen jwtGen;
@@ -52,19 +55,16 @@ public class AnonController {
 
     @PostMapping(value = "/registration")
     @ResponseBody
-    public Object processAdminRegistration(@Valid User user, BindingResult bindingResult) throws JSONException {
+    public String processAdminRegistration(User user, BindingResult bindingResult) throws JSONException {
         JSONObject jsonObject = new JSONObject();
         user.setUserRole(UserRole.ROLE_USER);
-
-        if (!bindingResult.hasErrors() && userRepository.findUserByUsername(user.getUsername()) == null && userRepository.findUserByMail(user.getMail()) == null) {
+        if (userRepository.findUserByUsername(user.getUsername()) == null) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
-            @Valid User save = userRepository.save(user);
-            if (save != null) {
-                jsonObject.put("status", "success");
-                return jsonObject;
-            }
+            userRepository.save(user);
+            jsonObject.put("status", "success");
+            return jsonObject.toString();
         }
-        jsonObject.put("error", "Invalid data!");
+        jsonObject.put("error", "user exists");
         return jsonObject.toString();
     }
 }

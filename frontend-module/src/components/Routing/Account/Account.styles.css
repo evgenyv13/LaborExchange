@@ -1,0 +1,18 @@
+.content-background {
+  position: absolute;
+  top:56px;
+  bottom:0;
+  left:0;
+  right:0;
+  overflow:hidden;
+  z-index:-1;
+  /*background: linear-gradient(
+    rgba(77,105,122, 0.65),
+    rgba(77,105,122, 0.65)
+    ),
+    url('https://images.pexels.com/photos/1323592/pexels-photo-1323592.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260');*/
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  overflow-y: auto;
+}

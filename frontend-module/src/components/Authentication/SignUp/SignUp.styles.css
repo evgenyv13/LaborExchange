@@ -1,0 +1,103 @@
+.sign-up-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sign-up-page {
+    color: #222;
+    background: #f5f5f5;
+    font-family: Lato, sans-serif;
+    font-weight: 300;
+    line-height: 1.6;
+    font-size: 16px;
+    position: absolute;
+    top: 0;
+    bottom:0;
+    left:0;
+    right:0;
+    overflow:hidden;
+    z-index:-1;
+    background: linear-gradient(
+            rgba(0,0,0, 0.25),
+            rgba(0,0,0, 0.25)
+    ), url("../../../common/images/bg1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    overflow-y: auto;
+    background-position: center;
+}
+
+.sign-up-content {
+    display: block;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position:absolute;
+    top: 25%;
+    bottom:0;
+    left:0;
+    right:0;
+    overflow: hidden;
+}
+
+.sign-up-input { 
+    border: 1px solid black;
+    border-radius: 8px;
+    width: 300px;
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.sign-up-submit {
+    color: #fff;
+    text-decoration: none;
+    width: 300px;
+    height: 50px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #28a745;
+    border: none;
+}
+
+.sign-in-submit:hover {
+    outline: none;
+    text-decoration: none;
+    color: white;
+    border: none;
+}
+
+::placeholder {
+	padding-left: 10px;
+    color: gray;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    padding-left: 10px;
+    color: gray;
+    opacity: 1;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+   vpadding-left: 10px;
+   color: gray;
+}
+
+.sign-up-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+input{
+    text-indent: 15px;
+}
