@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
-import SignIn from './components/Authentication/SignIn/SignIn';
-import SignUp from './components/Authentication/SignUp/SignUp';
+import SignIn from './components/Auhthinfication/SignIn/SignIn';
+import SignUp from './components/Auhthinfication/SignUp/SignUp';
 import Landing from './components/Landing/Landing';
 import Account from './components/Routing/Account/Account';
 import './App.css';

@@ -7,12 +7,12 @@ import './Header.styles.css';
 class Header extends Component {
     state = {
         isOpen: false
-    };
+    }
     toggle = () => {
         this.setState({
             isOpen: !this.state.isOpen
         });
-    };
+    }
 
     render() {
         return (
@@ -21,7 +21,7 @@ class Header extends Component {
                 <Navbar expand="md" style={{backgroundColor: "#000", opacity: '0.7'}}>
                     <NavbarBrand href="/" style={{ color: "#fff"}}>
                         <div className={"navbar-brand-text"}>
-                            Labour Exchange
+                            STARTUPS
                         </div>
                     </NavbarBrand>
 
@@ -32,6 +32,7 @@ class Header extends Component {
                         cursor: "pointer",
                         overflow: "hidden",
                         outline: "none",
+                        border: "none",
                         border: "2px solid #fff",
                         borderRadius: "3px",
                         marginBottom: "4px"

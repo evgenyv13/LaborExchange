@@ -10,9 +10,7 @@ class SignIn extends Component {
         super(props);
         this.state = {
             email: '',
-            password: '',
-            emptyField: false,
-            wrongData: false
+            password: ''
         };
         this.setUsername = this.setUsername.bind(this);
         this.setPassword = this.setPassword.bind(this);
@@ -39,13 +37,6 @@ class SignIn extends Component {
     processLogin() {
         let username = this.state.email;
         let password = this.state.password;
-        if (password==='' || username==='') {
-            this.setState({
-                emptyField: true,
-                wrongData: false,
-            });
-            return ;
-        }
         let formData = new FormData();
         formData.append("username", username);
         formData.append("password", password);
@@ -55,10 +46,7 @@ class SignIn extends Component {
                this.props.history.replace('/account/my-page');
             })
             .catch(err =>{
-                this.setState({
-                    emptyField: false,
-                    wrongData: true,
-                });
+                alert(err);
             })
         } else {
             alert(`Username and Password can't be empty`);
@@ -88,7 +76,7 @@ class SignIn extends Component {
                                             id="inputUsername"
                                             value={this.state.email}
                                             onChange={this.setUsername}
-                                            placeholder="login"
+                                            placeholder="Login"
                                             required=""
                                             autoFocus=""
                                             style={{marginBottom: "10px"}}
@@ -98,25 +86,11 @@ class SignIn extends Component {
                                             value={this.state.password}
                                             id="inputPassword"
                                             onChange={this.setPassword}
-                                            placeholder="password"
+                                            placeholder="Password"
                                             required=""
                                             style={{marginBottom: "10px"}}
                                         />
                                         <span style={{color: 'red'}} id="error-span"/>
-                                        {this.state.emptyField ?
-                                            <p style={{color: 'red', fontSize: '13px'}}>
-                                                Empty field, write login and password
-                                            </p>
-                                            :
-                                            null
-                                        }
-                                        {this.state.wrongData ?
-                                            <p style={{color: 'red', fontSize: '13px'}}>
-                                                Wrong login or password
-                                            </p>
-                                            :
-                                            null
-                                        }
                                         <Button
                                             color="success"
                                             id="loginbutton"
