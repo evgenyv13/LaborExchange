@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import {Button, Card, CardBody, CardImg, CardText, CardTitle, Col, Collapse, Progress, Row,} from 'reactstrap';
 import UserService from '../../UserService';
 import UserIcon from '../../../common/images/UserIcon.jpg';
-import './MyPage.styles.css';
+import './UserPage.styles.css';
 import 'font-awesome/css/font-awesome.min.css';
 
 
-export default class MyPage extends Component {
-    constructor(props) {
-        super(props);
+export default class UserPage extends Component {
+    constructor() {
+        super();
         this.UserService = new UserService();
     }
     state = {
@@ -17,7 +17,7 @@ export default class MyPage extends Component {
             currentRole: 'Web App Developer',
             email: 'somemail@gmail.com',
             websiteLink: 'www.coolsite.com',
-            userSkills: [],
+            skills: [],
             education: [],
             experience: [],
             languages: [],
@@ -39,14 +39,16 @@ export default class MyPage extends Component {
         collapseAboutMe: true,
         projectsListData: [],
         commentsListData: [],
-    };
-
-    componentDidMount() {
-        this.setUserInfo();
     }
 
-    setUserInfo = async () => {
-        const gotUser = await this.UserService.getInfoAboutMe();
+    componentDidMount() {
+        const { match } = this.props;
+        const userId = match.params.id;
+        this.setUserInfo(userId);
+    }
+
+    setUserInfo = async (userId) => {
+        const gotUser = await this.UserService.getInfoAboutUser(userId);
         if (gotUser) {
             console.log(gotUser);
 
@@ -54,7 +56,7 @@ export default class MyPage extends Component {
                 ...this.state.user,
                 name: gotUser.username,
                 email: gotUser.mail,
-                userSkills: gotUser.userSkills,
+                skills: gotUser.skills.split(" "),
                 websiteLink: gotUser.website,
                 languages: gotUser.languageLevels,
                 education: gotUser.educations,
@@ -65,17 +67,19 @@ export default class MyPage extends Component {
                 twitter: gotUser.twitter,
                 youtube: gotUser.youtube,
                 aboutMe: gotUser.aboutMe,
-            };
+            }
             console.log(updatedUser);
             this.setState({
                 user: updatedUser,
             });
 
         }
-    };
+    }
 
     setProjectsForUser = async () => {
-        const userProjects = await this.UserService.getMyProjects();
+        const { match } = this.props;
+        const userId = match.params.id;
+        const userProjects = await this.UserService.getUserProjects(userId);
         if (userProjects && userProjects.content && userProjects.content.length) {
             let projectList = [];
             userProjects.content.forEach(project => {
@@ -93,10 +97,12 @@ export default class MyPage extends Component {
                 projectsListData: projectList,
             });
         }
-    };
+    }
 
-    setCommentsForUser = async () => {
-        const commentsForUser = await this.UserService.getCommentsForMe();
+    setCommentsForUser = async () => { 
+        const { match } = this.props;
+        const userId = match.params.id;
+        const commentsForUser = await this.UserService.getCommentsForUser(userId);
         if (commentsForUser && commentsForUser.length) {
             let commentsList = [];
             commentsForUser.forEach(comment => {
@@ -112,7 +118,7 @@ export default class MyPage extends Component {
                 commentsListData: commentsList,
             });
         }
-    };
+    }
 
     toggleProjects = () => {
         this.setState({
@@ -121,7 +127,7 @@ export default class MyPage extends Component {
             collapseReviews: false,
         });
         this.setProjectsForUser();
-    };
+    }
 
     toggleReviews = () => {
         this.setState({
@@ -130,7 +136,7 @@ export default class MyPage extends Component {
             collapseAboutMe: false,
         });
         this.setCommentsForUser();
-    };
+    }
 
     toggleAboutMe = () => {
         this.setState({
@@ -138,16 +144,16 @@ export default class MyPage extends Component {
             collapseProjects: false,
             collapseReviews: false,
         });
-    };
+    }
 
     editProfile = () => {
         this.props.history.push(`/account/edit-user`);
-    };
+    }
 
     render() {
         return (
-            <div className={"my-page"}>
-                <div className={"my-page-wrapper"}>
+            <div className={"user-page"}>
+                <div className={"user-page-wrapper"}>
                 <Row>
                     <Col
                         xs={{ size: 12, offset: 0 }}
@@ -219,8 +225,7 @@ export default class MyPage extends Component {
                                         xl={{ size: 3, offset: 0 }}                                        
                                     >
                                         <div className={"personal-buttons"}>
-                                            <button className={"contact-button"}><i class="fa fa-paper-plane"/>&nbsp;CONTACT ME</button>
-                                            <button className={"edit-button"} onClick={this.editProfile}><i className="fa fa-edit"/>&nbsp;Edit profile</button>
+                                            <button className={"contact-button"}><i class="fa fa-paper-plane"/>&nbsp;CONTACT USER</button>
                                         </div>
                                     </Col>
                                 </Row>
@@ -242,7 +247,7 @@ export default class MyPage extends Component {
                                 lg={{ size: 6, offset: 1 }}
                                 xl={{ size: 7, offset: 1 }}
                                
-                            >
+                            >   
                                 <Collapse isOpen={this.state.collapseProjects}>
                                     <Col
                                         xs={{ size: 12, offset: 0 }}
@@ -250,17 +255,15 @@ export default class MyPage extends Component {
                                         md={{ size: 12, offset: 0 }}
                                         lg={{ size: 12, offset: 0 }}
                                         xl={{ size: 12, offset: 0 }}
-
                                     >
                                         <Card
                                             style={{marginBottom: "30px"}}
                                         >
-                                            {this.state.projectsListData && this.state.projectsListData.length &&
                                             <div className={"card-content"}>
                                                 <div className={"card-title"}>Latest projects</div>
                                                 {this.state.projectsListData.map((project) => {
                                                     return (
-                                                        <div className="my-page-project">
+                                                        <div className="user-page-project">
                                                             <Card key={project.projectId}>
                                                                 <CardBody>
                                                                     <CardTitle>{project.projectName}</CardTitle>
@@ -271,12 +274,9 @@ export default class MyPage extends Component {
                                                     );
                                                 })}
                                             </div>
-                                            }
                                         </Card>
                                     </Col>
                                 </Collapse>
-
-
                                 <Collapse isOpen={this.state.collapseReviews}>
                                     <Col
                                         xs={{ size: 12, offset: 0 }}
@@ -289,26 +289,24 @@ export default class MyPage extends Component {
                                         <Card
                                             style={{marginBottom: "30px"}}
                                         >
-                                            {this.state.commentsListData && this.state.commentsListData.length &&
-                                                <div className={"card-content"}>
-                                                    <div className={"card-title"}>Comments</div>
-                                                    {this.state.commentsListData.map((review) => {
-                                                        console.log(review);
+                                            <div className={"card-content"}>
+                                                <div className={"card-title"}>Comments</div>
+                                                {this.state.commentsListData.map((review) => {
+                                                    console.log(review);
 
-                                                        return (
-                                                            <div className="my-page-project">
-                                                                <Card key={review.commentId}>
-                                                                    <CardBody>
-                                                                        <CardTitle>{review.commentFrom}</CardTitle>
-                                                                        <CardText>{review.commentText}</CardText>
-                                                                    </CardBody>
-                                                                </Card>
-                                                            </div>
+                                                    return (
+                                                        <div className="user-page-project">
+                                                            <Card key={review.commentId}>
+                                                                <CardBody>
+                                                                    <CardTitle>{review.commentFrom}</CardTitle>
+                                                                    <CardText>{review.commentText}</CardText>
+                                                                </CardBody>
+                                                            </Card>
+                                                        </div>
 
-                                                        );
-                                                    })}
-                                                </div>
-                                            }
+                                                    );
+                                                })}
+                                            </div>
                                         </Card>
                                     </Col>
                                 </Collapse>
@@ -325,7 +323,7 @@ export default class MyPage extends Component {
                                             style={{marginBottom: "30px"}}
                                         >
                                             <div className={"card-content"}>
-                                                {this.state.user && this.state.user.aboutMe && <div className={"card-title"}>About Me</div>}
+                                                {this.state.user && this.state.user.aboutMe && <div className={"card-title"}>About User</div>}
                                                 {this.state.user && this.state.user.aboutMe &&
                                                     <div className={"card-content-item"}>{this.state.user && this.state.user.aboutMe || ''}</div>
                                                 }
@@ -341,30 +339,30 @@ export default class MyPage extends Component {
                                                         </div>
                                                     )
                                                 }
-                                                 {this.state.user &&  this.state.user.userSkills &&
+                                                {this.state.user && this.state.user.skills &&
                                                     <div>
                                                         <div className={"card-title"}>Skills</div>
                                                         <div className={"card-content-item"}>
                                                             <div className={"card-text"}>
                                                                 Intro about your skills goes here. Keep the list lean and only show your primary skillset. You can always provide a link to your Linkedin or Coderwall profile so people can get more info there.
                                                             </div>
-                                                            {this.state.user.userSkills
-                                                                .map((userSkill) =>
+                                                            {this.state.user && this.state.user.skills &&
+                                                                this.state.user.skills.map((skill) =>
                                                                     <div>
-                                                                        <div className={"skill"}>{userSkill.skill}</div>
-                                                                        <Progress color="success" value={(userSkill.skill.length * 25) % 100} style={{height: "10px" }} />
+                                                                        <div className={"skill"}>{skill}</div>
+                                                                        <Progress color="success" value={(skill.length * 25) % 100} style={{height: "10px" }} />
                                                                     </div>
                                                                 )
                                                             }
                                                         </div>
                                                     </div>
-                                                 }
-                                                 {this.state.user && this.state.user.education &&
+                                                }
+                                                {this.state.user && this.state.user.education && 
                                                     <div>
                                                         <div className={"card-title"}>Education</div>
                                                         <div className={"card-content-item"}>
-                                                            {this.state.user.education
-                                                                .map((item) => 
+                                                            {this.state.user && this.state.user.education &&
+                                                                this.state.user.education.map((item) => 
                                                                     <div className={"education-item"}>
                                                                         <div className={"education-name"}> <i class="fa fa-graduation-cap"/> {item.university}</div>
                                                                     </div>
@@ -372,13 +370,13 @@ export default class MyPage extends Component {
                                                             }
                                                         </div>
                                                     </div>
-                                                 }
+                                                }
                                                 {this.state.user && this.state.user.languages &&
                                                     <div>
                                                         <div className={"card-title"}>Languages</div>
                                                         <div className={"card-content-item"}>
-                                                        {this.state.user.languages
-                                                            .map((language) => 
+                                                        {this.state.user && this.state.user.languages &&
+                                                            this.state.user.languages.map((language) => 
                                                                 <div className={'language-item'}>
                                                                     <div className={"language-name"}>{language.language}</div>
                                                                     <div className={"language-level"}>{language.language_level}</div>
@@ -392,8 +390,8 @@ export default class MyPage extends Component {
                                                     <div>
                                                         <div className={"card-title"}>Conferences</div>
                                                         <div className={"card-content-item"}>
-                                                        {this.state.user.conferences
-                                                            .map(conference => 
+                                                        {this.state.user && this.state.user.conferences &&
+                                                            this.state.user.conferences.map(conference => 
                                                                 <div className={"conference-item"}>
                                                                     <i class="fa fa-calendar"/> {`${conference.name} (${conference.city}) `}
                                                                 </div>    
@@ -401,7 +399,7 @@ export default class MyPage extends Component {
                                                         }
                                                         </div>
                                                     </div>
-                                                }  
+                                                }
                                             </div>
                                             
                                         </Card>
@@ -448,7 +446,7 @@ export default class MyPage extends Component {
                                                         lg={{ size: 12, offset: 0 }}
                                                         xl={{ size: 10, offset: 1 }}
                                                     >
-                                                        <Button onClick={this.toggleAboutMe} block><i className="fa fa-user"/> About Me</Button>
+                                                        <Button onClick={this.toggleAboutMe} block><i className="fa fa-user"/> About User</Button>
                                                     </Col>
                                                     <Col
                                                         xs={{ size: 12, offset: 0 }}

@@ -11,7 +11,7 @@ class SignIn extends Component {
         this.state = {
             email: '',
             password: '',
-            emptyField: false,
+            emptyField: false,	
             wrongData: false
         };
         this.setUsername = this.setUsername.bind(this);
@@ -22,7 +22,7 @@ class SignIn extends Component {
 
     componentDidMount(){
         if(AuthService.loggedIn())
-            this.props.history.replace('/account/my-page');
+            this.props.history.replace('/account/projects-catalog');
     }
 
     setUsername(event) {
@@ -39,12 +39,12 @@ class SignIn extends Component {
     processLogin() {
         let username = this.state.email;
         let password = this.state.password;
-        if (password==='' || username==='') {
-            this.setState({
-                emptyField: true,
-                wrongData: false,
-            });
-            return ;
+        if (password==='' || username==='') {	
+            this.setState({	
+                emptyField: true,	
+                wrongData: false,	
+            });	
+            return ;	
         }
         let formData = new FormData();
         formData.append("username", username);
@@ -52,12 +52,20 @@ class SignIn extends Component {
         if (formData) {
             this.Auth.login(formData)
             .then(res =>{
-               this.props.history.replace('/account/my-page');
+                console.log(res)
+                if (res.error) {
+                    this.setState({
+                        emptyField: false,	
+                        wrongData: true,	
+                    });
+                } else {
+                    this.props.history.replace('/account/projects-catalog');
+                }
             })
             .catch(err =>{
                 this.setState({
-                    emptyField: false,
-                    wrongData: true,
+                    emptyField: false,	
+                    wrongData: true,	
                 });
             })
         } else {
@@ -103,19 +111,19 @@ class SignIn extends Component {
                                             style={{marginBottom: "10px"}}
                                         />
                                         <span style={{color: 'red'}} id="error-span"/>
-                                        {this.state.emptyField ?
-                                            <p style={{color: 'red', fontSize: '13px'}}>
-                                                Empty field, write login and password
-                                            </p>
-                                            :
-                                            null
-                                        }
-                                        {this.state.wrongData ?
-                                            <p style={{color: 'red', fontSize: '13px'}}>
-                                                Wrong login or password
-                                            </p>
-                                            :
-                                            null
+                                        {this.state.emptyField ?	
+                                            <p style={{color: 'red', fontSize: '13px'}}>	
+                                                Empty field, write login and password	
+                                            </p>	
+                                            :	
+                                            null	
+                                        }	
+                                        {this.state.wrongData ?	
+                                            <p style={{color: 'red', fontSize: '13px'}}>	
+                                                Wrong login or password	
+                                            </p>	
+                                            :	
+                                            null	
                                         }
                                         <Button
                                             color="success"
