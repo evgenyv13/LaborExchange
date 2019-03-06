@@ -20,8 +20,13 @@ class Project extends Component {
         return slicedData;
     };
 
+    views = Math.ceil(Math.random() * this.props.projectName.length)
+    likes = Math.ceil(Math.random() * this.props.projectName.length)
+    comments = Math.ceil(Math.random() * this.props.projectName.length)
+
     render() {
         const { projectName, projectDescription } = this.props;
+       
         const descriptionLength = 80;
         const nameLength = 12;
         const description = this.formatString(projectDescription, descriptionLength);
@@ -42,7 +47,7 @@ class Project extends Component {
                                 xl={{ size: 4, offset: 0 }}
                             >
                               <div className="icons-style">
-                                <i class="fa fa-thumbs-up">&nbsp;{Math.ceil(Math.random() * projectName.length)}</i>
+                                <i class="fa fa-thumbs-up">&nbsp;{this.likes}</i>
                               </div>
                             </Col>
                             <Col
@@ -53,7 +58,7 @@ class Project extends Component {
                                 xl={{ size: 4, offset: 0 }}
                             >
                                 <div className="icons-style">
-                                    <i class="fa fa-eye">&nbsp;{Math.ceil(Math.random() * projectName.length)}</i>
+                                    <i class="fa fa-eye">&nbsp;{this.views}</i>
                                 </div>
                             </Col>
                             <Col
@@ -64,7 +69,7 @@ class Project extends Component {
                                 xl={{ size: 4, offset: 0 }}
                             >
                                 <div className="icons-style">
-                                    <i className="fa fa-comments">&nbsp;{Math.ceil(Math.random() * projectName.length)}</i>
+                                    <i className="fa fa-comments">&nbsp;{this.comments}</i>
                                 </div>
                             </Col>
                         </Row>

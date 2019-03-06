@@ -8,6 +8,21 @@ export default class ProjectList extends Component {
         return (
             <Row>
                 {this.props.projectsListData
+                .filter((element) => {
+                    if (this.props.projectsDirection && this.props.projectsDirection.toLowerCase() === 'all') {
+                        return element;
+                    } else {
+                        return element.projectDirection === this.props.projectsDirection;
+                    }
+                })
+                .filter((element) => {
+                    if (this.props.projectsSkill && this.props.projectsSkill.toLowerCase() === 'all') {
+                        return element;
+                    } else {
+                        return element.projectSkills.includes(this.props.projectsSkill);
+                    }
+                })
+                .filter((element) => element.projectName.toLowerCase().includes(this.props.searchProjectName.toLowerCase()))
                 .map((element) => 
                     <Col
                         key={element.projectName + '_' +element.projectId}
