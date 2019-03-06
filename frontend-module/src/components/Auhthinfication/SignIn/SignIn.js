@@ -20,7 +20,7 @@ class SignIn extends Component {
 
     componentDidMount(){
         if(AuthService.loggedIn())
-            this.props.history.replace('/account/my-page');
+            this.props.history.replace('/account/projects-catalog');
     }
 
     setUsername(event) {
@@ -43,7 +43,7 @@ class SignIn extends Component {
         if (formData) {
             this.Auth.login(formData)
             .then(res =>{
-               this.props.history.replace('/account/my-page');
+               this.props.history.replace('/account/projects-catalog');
             })
             .catch(err =>{
                 alert(err);

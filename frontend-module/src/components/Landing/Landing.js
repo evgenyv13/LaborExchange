@@ -24,7 +24,7 @@ class Landing extends Component {
                     <Navbar expand="md" style={{backgroundColor: "#000", opacity: '0.7'}}>
                         <NavbarBrand href="/" style={{ color: "#fff"}}>
                             <div className={"navbar-brand-text"}>
-                                STARTUPS
+                                LaborExchange
                             </div>
                         </NavbarBrand>
 
@@ -58,8 +58,9 @@ class Landing extends Component {
                 <div className="landing-page">
                     <div className="landing-content">
                         <row>
-                            <h1 className="boxed classH1">Stay hungry stay foolish</h1>
-                            <p className="boxed classP">Steve Jobs</p>
+                            <h1 className="boxed classH1">Have a good idea, but no team or investment?</h1>
+                            <h1 className="boxed classH1">We have a solution!</h1>
+                            <p className="boxed classP">Labor Echange</p>
 
                         </row>
                     </div>

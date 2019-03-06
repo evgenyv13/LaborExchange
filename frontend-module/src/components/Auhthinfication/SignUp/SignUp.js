@@ -20,7 +20,7 @@ class SignUp extends Component {
 
     componentDidMount(){
         if(AuthService.loggedIn())
-            this.props.history.replace('/account/my-page');
+            this.props.history.replace('/account/projects-catalog');
     }
 
     changeInput(event) {

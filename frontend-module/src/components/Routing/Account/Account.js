@@ -25,7 +25,6 @@ class Account extends Component {
           <Header handleLogout={this.handleLogout} />
           <div className="content-background">
             <Switch>
-              <Route path="/account/my-page" component={MyPage} />
               <Route path="/account/projects-catalog" component={ProjectsCatalog} />
               <Route path="/account/project/:id" component={ProjectPage} />
               <Route component={Error}/>

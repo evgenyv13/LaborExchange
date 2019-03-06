@@ -61,7 +61,7 @@ class Header extends Component {
                             </NavItem>
                             <NavItem style={{paddingTop: "8px"}}>
                                 <span className="navlink-underline">
-                                    <Link  to="/account/my-page" className={"navlink"}>MY PAGE</Link>
+                                    <Link  to="/account/projects-catalog" className={"navlink"}>MY PAGE</Link>
                                 </span>
                             </NavItem>
                             <NavItem style={{paddingTop: "8px"}}>

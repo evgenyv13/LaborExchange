@@ -81,7 +81,7 @@ export default class EditUser extends Component {
         formData.append('aboutMe', this.state.aboutMe);
         const response = await this.UserService.updateUser(formData);
         console.log(response);
-        this.props.history.push(`/account/my-page`);
+        this.props.history.push(`/account/projects-catalog`);
     };
 
 
