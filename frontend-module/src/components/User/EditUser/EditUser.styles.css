@@ -1,0 +1,175 @@
+.edit-user-wrapper {
+}
+
+.edit-user-content {
+  margin-top: 40px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 80px;
+}
+
+.input-wrapper {
+  margin-bottom: 20px;
+  margin-top: 0px;
+}
+
+.save-button {
+  background: #30607C;
+  border: 1px solid #30607C;
+  color: #fff;
+  border-radius: 5px;
+  font-family: 'Montserrat',arial,sans-serif;
+  margin-top: 7px;
+  padding: 0px 20px;
+  width: 100%;
+}
+
+.save-button:hover {
+  background: #315367;
+  cursor: pointer;
+}
+
+.editUserHeader {
+  text-align: center;
+  padding-bottom: 11px;
+}
+
+.create-additional-input {
+  width: 100%;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  border-right: 1px solid gray;
+  padding: 10px 0 10px 0;
+}
+
+.create-additional-input-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid gray;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.field_enum{
+  display: inline-flex;
+  padding: 5px 10px 5px 10px;
+  background-color: #778492;
+  color: white;
+  margin-right: 6px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
+.field_input{
+  display: inline-flex;
+  color: white;
+  margin-right: 6px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
+.double-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+@media only screen and (min-width: 925px) {
+  .double-input-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+
+.field_enum i:hover{
+  color: red;
+  cursor: pointer;
+}
+
+.addFiled {
+  align-self: center;
+  font-size: 15px;
+  height: fit-content;
+  background: #30607C;
+  border: 1px solid #30607C;
+  color: #fff;
+  border-radius: 5px;
+  font-family: 'Montserrat',arial,sans-serif;
+  padding: 3px 10px;
+}
+
+@media only screen and (min-width: 925px) {
+  .addFiled {
+    align-self: center;
+    font-size: 15px;
+    height: fit-content;
+    background: #30607C;
+    border: 1px solid #30607C;
+    color: #fff;
+    border-radius: 5px;
+    font-family: 'Montserrat',arial,sans-serif;
+    padding: 3px 10px;
+  }
+}
+
+.addFiled i:hover{
+  color: #00b300;
+  cursor: pointer;
+}
+
+.deleteIcon {
+  align-self: center;
+  padding-left: 10px;
+}
+
+.inputExperience {
+  margin: 2px 6px 2px 0px;
+}
+
+@media only screen and (min-width: 925px) {
+  .inputExperience {
+    margin: 2px 0px 2px 0px;
+  }
+}
+
+.textAreaExperience {
+  resize: none;
+  margin: 2px 6px 2px 0px;
+}
+
+@media only screen and (min-width: 925px) {
+  .textAreaExperience {
+    resize: none;
+    margin: 2px 0px 2px 0px;
+  }
+}
+
+.add-button {
+  align-self: auto;
+  font-size: 15px;
+  height: fit-content;
+  background: #4e8caf;
+  border: 1px solid #30607C;
+  color: #fff;
+  font-family: 'Montserrat',arial,sans-serif;
+  padding: 3px 10px;
+}
+/*
+
+*/
+.add-button:hover {
+  background: #417390;
+  cursor: pointer;
+}
+
+
