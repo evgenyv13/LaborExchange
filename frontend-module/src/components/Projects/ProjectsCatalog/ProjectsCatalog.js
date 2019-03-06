@@ -4,6 +4,7 @@ import './ProjectsCatalog.style.css';
 import ReactPaginate from 'react-paginate';
 import {Col, Row,} from 'reactstrap';
 import UserService from '../../UserService';
+import SearchCard from "../../Search/SearchCard/SearchCard";
 
 export default class ProjectsCatalog extends Component {
     constructor() {
@@ -59,12 +60,13 @@ export default class ProjectsCatalog extends Component {
             <div className="projects-catalog">
                 <div className="projects-catalog-wrapper">
                     <Row>
+                        <SearchCard updateData={this.updateData} />
                         <Col
                             xs={{ size: 12, offset: 0 }}
                             sm={{ size: 12, offset: 0 }}
                             md={{ size: 12, offset: 0 }}
-                            lg={{ size: 12, offset: 0 }}
-                            xl={{ size: 12, offset: 0 }}
+                            lg={{ size: 9, offset: 0 }}
+                            xl={{ size: 9, offset: 0 }}
                         >
                             <ProjectList
                                     projectsListData={this.state.projectsListData}
