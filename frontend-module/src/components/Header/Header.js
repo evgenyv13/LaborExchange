@@ -21,7 +21,7 @@ class Header extends Component {
                 <Navbar expand="md" style={{backgroundColor: "#000", opacity: '0.7'}}>
                     <NavbarBrand href="/" style={{ color: "#fff"}}>
                         <div className={"navbar-brand-text"}>
-                            STARTUPS
+                            LaborExchange
                         </div>
                     </NavbarBrand>
 

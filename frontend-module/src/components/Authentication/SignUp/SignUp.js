@@ -14,7 +14,10 @@ class SignUp extends Component {
         this.state = {
             username: '',
             password: '',
-            token: tokenValue
+            token: tokenValue,
+            error: false,	
+            exists: false,
+            confirm_password: '',
         }
     }
 
@@ -25,40 +28,32 @@ class SignUp extends Component {
 
     changeInput(event) {
         this.setState({
-            [event.target.id]: [event.target.value]
+            [event.target.id]: event.target.value,
+            error: false,
+            exists: false,
         });
     }
 
     sendFetch() {
-        /*let formData = new FormData();
-        formData.append('username', this.state.username);
-        formData.append('password', this.state.password);
-        formData.append('token', this.state.token);
-        fetch(`http://localhost:8080/registration`, {
-            method: "POST",
-            body: formData
-        }).then(response=>{
-            return response.json()
-        }).then(data=>{
-            console.log(data);
-            if (data.error === undefined){
-                document.getElementById('doc-form').style.display = 'none';
-                window.location.href = '/auth'
-            }else{
-                document.getElementById('error-span').style.color = "red";
-                document.getElementById('error-span').innerText = "Invalid data";
-            }
-
-        })*/
         let formData = new FormData();
+        let password = this.state.password;	
+        let confirm_password = this.state.confirm_password;	
+        if (password.length < 4 || confirm_password.length < 4 || password !== confirm_password) {	
+            this.setState({error: true, exists: false});	
+            return ;	
+        }
         formData.append('username', this.state.username);
-        formData.append('password', this.state.password);
+        formData.append('password', password);
         //formData.append('token', this.state.token);
         if (formData) {
             AuthService.signUp(formData)
             .then(res =>{
-                console.log(res);
-               this.props.history.replace('/signin');
+                console.log(res.error);	                
+                if (res.error === "user exists") {
+                    this.setState({exists: true, error: false});	
+                    return ;	
+                }
+                this.props.history.replace('/signin');
             })
             .catch(err =>{
                 alert(err);
@@ -89,8 +84,8 @@ class SignUp extends Component {
                                             onChange={this.changeInput}
                                             type="text"
                                             className="sign-up-input"
-                                            id="Login"
-                                            placeholder="UserName"
+                                            id="username"
+                                            placeholder="user name"
                                             required=""
                                             style={{marginBottom: "10px"}}
                                         />
@@ -100,21 +95,33 @@ class SignUp extends Component {
                                             className="sign-up-input"
                                             name="password"
                                             id="password"
-                                            placeholder="Password"
+                                            placeholder="password"
                                             required=""
                                             style={{marginBottom: "10px"}}
                                         />
                                         <Input
                                             onChange={this.changeInput}
-                                            type="confirm-password" 
+                                            type="password"
                                             className="sign-up-input"
-                                            name="confirm-password"
-                                            id="confirm-password"
-                                            placeholder="Confirm Password"
+                                            name="confirm_password"
+                                            id="confirm_password"
+                                            placeholder="confirm password"
                                             required=""
                                             style={{marginBottom: "10px"}}
                                         />
                                         <span style={{color: 'red'}} id="error-span"/>
+                                        {this.state.error ?	
+                                            <p style={{color: 'red', fontSize: '13px'}}>	
+                                                Wrong data, name and password should be equal and more than 5 symbols	
+                                            </p>	
+                                            : null	
+                                        }	
+                                        {this.state.exists ?	
+                                            <p style={{color: 'red', fontSize: '13px'}}>	
+                                                This username is already exists, try another one	
+                                            </p>	
+                                            : null	
+                                        }
                                         <Button
                                             color="success"
                                             id="loginbutton"
