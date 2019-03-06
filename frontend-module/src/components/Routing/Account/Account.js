@@ -4,6 +4,7 @@ import MyPage from '../../User/MyPage/MyPage';
 import ProjectsCatalog from '../../Projects/ProjectsCatalog/ProjectsCatalog';
 import Header from '../../Header/Header';
 import AuthService from '../../AuthService';
+import withAuth from '../../withAuth';
 import Error from '../Error/Error';
 import "./Account.styles.css";
 
@@ -35,4 +36,4 @@ class Account extends Component {
   }
 }
 
-export default Account;
+export default withAuth(Account);

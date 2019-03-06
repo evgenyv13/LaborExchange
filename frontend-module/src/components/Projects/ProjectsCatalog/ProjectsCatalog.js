@@ -4,37 +4,6 @@ import './ProjectsCatalog.style.css';
 import ReactPaginate from 'react-paginate';
 import {Col, Row,} from 'reactstrap';
 import UserService from '../../UserService';
-import SearchCard from "../../Search/SearchCard/SearchCard";
-
-const testProjectsData = [
-    {
-        projectName: 'Test 1',
-        projectDescription: 'Test description',
-        projectDirection: 'Test direction',
-        projectSkills: [],
-        projectProgress: 10,
-        projectId: '1209830918',
-        projectTasks: [],
-    },
-    {
-        projectName: 'Test 1',
-        projectDescription: 'Test description',
-        projectDirection: 'Test direction',
-        projectSkills: [],
-        projectProgress: 10,
-        projectId: '1209830918',
-        projectTasks: [],
-    },
-    {
-        projectName: 'Test 1',
-        projectDescription: 'Test description',
-        projectDirection: 'Test direction',
-        projectSkills: [],
-        projectProgress: 10,
-        projectId: '1209830918',
-        projectTasks: [],
-    },
-]
 
 export default class ProjectsCatalog extends Component {
     constructor() {
@@ -90,16 +59,15 @@ export default class ProjectsCatalog extends Component {
             <div className="projects-catalog">
                 <div className="projects-catalog-wrapper">
                     <Row>
-                        <SearchCard updateData={this.updateData} />
                         <Col
                             xs={{ size: 12, offset: 0 }}
                             sm={{ size: 12, offset: 0 }}
                             md={{ size: 12, offset: 0 }}
-                            lg={{ size: 9, offset: 0 }}
-                            xl={{ size: 9, offset: 0 }}
+                            lg={{ size: 12, offset: 0 }}
+                            xl={{ size: 12, offset: 0 }}
                         >
                             <ProjectList
-                                    projectsListData={testProjectsData}
+                                    projectsListData={this.state.projectsListData}
                                     projectsDirection={this.state.selectedDirection}
                                     projectsSkill={this.state.selectedSkill}
                                     searchProjectName={this.state.searchProjectName}

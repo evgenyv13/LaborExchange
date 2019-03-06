@@ -42,7 +42,7 @@ class Project extends Component {
                                 xl={{ size: 4, offset: 0 }}
                             >
                               <div className="icons-style">
-                                <i class="fa fa-thumbs-up">&nbsp;{projectName.length}</i>
+                                <i class="fa fa-thumbs-up">&nbsp;{Math.ceil(Math.random() * projectName.length)}</i>
                               </div>
                             </Col>
                             <Col
@@ -53,7 +53,7 @@ class Project extends Component {
                                 xl={{ size: 4, offset: 0 }}
                             >
                                 <div className="icons-style">
-                                    <i class="fa fa-eye">&nbsp;{projectName.length}</i>
+                                    <i class="fa fa-eye">&nbsp;{Math.ceil(Math.random() * projectName.length)}</i>
                                 </div>
                             </Col>
                             <Col
@@ -64,7 +64,7 @@ class Project extends Component {
                                 xl={{ size: 4, offset: 0 }}
                             >
                                 <div className="icons-style">
-                                    <i className="fa fa-comments">&nbsp;{projectName.length}</i>
+                                    <i className="fa fa-comments">&nbsp;{Math.ceil(Math.random() * projectName.length)}</i>
                                 </div>
                             </Col>
                         </Row>
