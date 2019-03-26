@@ -1,0 +1,101 @@
+.edit-project-wrapper {
+}
+
+.edit-project-content {
+  margin-top: 40px;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 80px;
+}
+
+.MDBInput-wrapper {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}
+
+.edit-project-MDBInput {
+  width: 100%;
+  border: none;
+  padding: 0px;
+  margin: 0px;
+  border-left: 1px solid gray;
+  padding: 10px 0 10px 0;
+}
+
+.edit-project-MDBInput-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid gray;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+}
+
+.edit-project-MDBInput-icon {
+  padding: 0 10px 0 10px;
+}
+
+::placeholder {
+	padding-left: 0px;
+  color: gray;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-MDBInput-placeholder { /* Internet Explorer 10-11 */
+  padding-left: 0px;
+  color: gray;
+  opacity: 1;
+}
+
+:-ms-MDBInput-placeholder { /* Microsoft Edge */
+ vpadding-left: 0px;
+ color: gray;
+}
+
+.inputTextArea {
+  min-height: 100px;
+}
+
+.save-MDBBtn {
+  background: #30607C;
+  border: 1px solid #30607C;
+  color: #fff;
+  border-radius: 5px;
+  font-family: 'Montserrat',arial,sans-serif;
+  margin-top: 7px;
+  padding: 3px 20px;
+}
+
+.save-MDBBtn:hover {
+  background: #315367;
+  cursor: pointer;
+}
+
+.edit-project-MDBBtn {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.add-MDBBtn {
+  align-self: center;
+  font-size: 15px;
+  height: fit-content;
+  background: #4e8caf;
+  border: 1px solid #30607C;
+  color: #fff;
+  font-family: 'Montserrat',arial,sans-serif;
+  padding: 3px 10px;
+  margin: 3px;
+}
+/*
+
+*/
+.add-MDBBtn:hover {
+  background: #417390;
+  cursor: pointer;
+}

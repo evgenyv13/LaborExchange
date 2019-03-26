@@ -1,0 +1,33 @@
+.task-description-block {
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    padding: 20px;
+    min-height: 50px;
+    margin-right: 50px;
+}
+
+.task-description-block:hover {
+    border: 1px solid green;
+}
+
+.task-wrapper {
+    margin-bottom: 10px;
+    /*  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.2);  */
+    cursor: pointer;
+}
+.task-wrapper:hover {
+    transition: 0.2s linear;
+    opacity: 0.85;
+}
+
+.MDBCard-wrapper:hover {
+    transition: 0.3s linear;
+    -webkit-transform: scale(1.04);
+    transform: scale(1.04);
+}
+
+.task-image-wrapper {
+    height: 70px;
+    width: 70px;
+}
