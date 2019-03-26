@@ -1,0 +1,64 @@
+.my-projects {
+
+}
+
+.my-projects-wrapper {
+    min-height: 810px;
+    margin-top: 30px;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 20px;
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.active-page a {
+    background-color: #fff;
+}
+
+.pagination a {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    color: #4d697a;
+}
+
+.pagination a:hover {
+    text-decoration: none;
+    color: #1E90FF;
+}
+
+.pagination li {
+    cursor: pointer;
+    margin: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+textarea:focus, MDBInput:focus, a:focus{
+    outline: none;
+}
+
+.create-project-MDBBtn MDBBtn {
+    background-color: #30607C;
+    margin-bottom: 20px;
+    margin-left: 0px;
+}
+
+.create-project-MDBBtn MDBBtn:hover {
+    background-color: #315367;
+}
+
+

@@ -1,0 +1,12 @@
+.projects-list-block {
+    border: 1px solid gray;
+    width: 70%;
+    min-height: 600px;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    margin-right: 50px;
+}
+
+.projects-list {
+    padding: 40px;
+}

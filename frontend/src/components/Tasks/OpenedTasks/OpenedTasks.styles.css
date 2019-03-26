@@ -1,0 +1,10 @@
+.opened-tasks {
+}
+
+.opened-tasks-wrapper {
+    min-height: 750px;
+    margin-top: 30px;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-bottom: 20px;
+}

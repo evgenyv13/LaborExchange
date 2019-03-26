@@ -1,0 +1,74 @@
+.project-name {
+    margin-bottom: 10px;
+}
+
+.project-description-block {
+    border: 1px solid gray;
+    border-radius: 5px;
+    margin-bottom: 30px;
+    padding: 20px;
+    min-height: 50px;
+    margin-right: 50px;
+}
+
+.project-description-block:hover {
+    border: 1px solid black;
+}
+
+
+.project-description {
+    padding: 5px;
+}
+
+.project-direction {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: #70BCFF;
+    color: white;
+}
+
+.project-skills {
+    margin-left: 5px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.skill {
+    /* display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center; */
+}
+
+.MDBCard-wrapper {
+    margin-bottom: 30px; 
+    /*  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 2px 20px 0 rgba(0, 0, 0, 0.2);  */
+    cursor: pointer;
+}
+
+.project-item-title {
+    margin-top: 0;
+    color: #545e69;
+    font-size: 24px;
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 400;
+    text-align: left;
+}
+
+.project-item-description {
+    margin-bottom: 10px;
+    min-height: 110px;
+}
+
+.icons-style {
+
+    color: #667588;
+    padding: 7px;
+    BORDER-RADIUS: 10PX;
+    text-align: center;
+}

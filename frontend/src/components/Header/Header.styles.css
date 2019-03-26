@@ -1,0 +1,16 @@
+.header-style {
+    background-color: #000;
+    opacity: 0.8;
+}
+
+.logout-MDBBtn {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    color: #fff;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    border: 1px solid #fff;
+    border-radius: 3px;
+    margin-bottom: 4px;
+}
