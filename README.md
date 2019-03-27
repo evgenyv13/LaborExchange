@@ -3,6 +3,6 @@
 - [Исходный код (develop branch)](https://github.com/evgenyv13/LaborExchange/tree/develop).
 - [Доска проекта](https://trello.com/b/Xb5CdHzg/le-labor-exchange).
 - [Диаграммы](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/diagram.md).
-- [Архитектура](...).
+- [Архитектура](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/Architecture.md).
 
 @Created by Scrum Guys
