@@ -72,3 +72,5 @@
 
 ##### 3.2.4 Ограничения <a name="3.2.4"></a>
 <p align="justify">Будет использоваться Spring Security для лучшей защиты пользовательской информации.</p>
+
+[Назад на главную](https://github.com/evgenyv13/LaborExchange/blob/master/README.md)
