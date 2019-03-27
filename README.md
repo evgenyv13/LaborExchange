@@ -1,6 +1,8 @@
 # LaborExchange
-- [SRS](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/srs.md).
-- [Source Code (develop branch)](https://github.com/evgenyv13/LaborExchange/tree/develop).
-- [Desk](https://trello.com/b/Xb5CdHzg/le-labor-exchange).
-- [Diagrams](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/diagram.md).
-- [Architecture](...).
+- [Превью](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/srs.md).
+- [Исходный код (develop branch)](https://github.com/evgenyv13/LaborExchange/tree/develop).
+- [Доска проекта](https://trello.com/b/Xb5CdHzg/le-labor-exchange).
+- [Диаграммы](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/diagram.md).
+- [Архитектура](...).
+
+@Created by Scrum Guys
