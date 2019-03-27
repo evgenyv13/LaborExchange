@@ -1,3 +1,5 @@
+# Диаграммы классов
+
 # Web-module
 ![Web](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/diagrams/classes/Controller.png)
 # Core-module (Project)
