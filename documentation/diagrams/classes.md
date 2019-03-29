@@ -2,4 +2,4 @@
 
 # Full-diagram
 ![FullDiagram](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/diagrams/classes/Package%20coremodule.png)
-https://github.com/evgenyv13/LaborExchange/blob/master/documentation/diagram.md)
+[назад на главную](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/diagram.md)
