@@ -12,6 +12,10 @@ public class ProjectOwnersDto {
 
     private float percent;
 
+    private float freeToSellToken;
+    private float freeToSellPerTokenPrice;
+
+
     private ProjectDto project;
 
     public ProjectOwnersDto(ProjectOwners projectOwners){
@@ -19,5 +23,7 @@ public class ProjectOwnersDto {
         this.percent = projectOwners.getPercent();
         this.user = new UserDto(projectOwners.getUser());
         this.project = new ProjectDto(projectOwners.getProject());
+        this.freeToSellPerTokenPrice = projectOwners.getFreeToSellPerTokenPrice();
+        this.freeToSellToken = projectOwners.getFreeToSellToken();
     }
 }

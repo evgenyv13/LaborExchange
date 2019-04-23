@@ -1,22 +1,29 @@
-package com.laborExchange.webmodule.model.entity;
+package com.laborExchange.webmodule.config;
 
+import com.laborExchange.coremodule.user.entity.UserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 
 public class UserDetail implements UserDetails {
-
-    private String username;
-    private String token;
     private Long id;
+    private String username;
+    private String password;
+    private UserRole userRole;
+
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetail(String username, String token, Long id, Collection<? extends GrantedAuthority> authorities) {
+    public UserDetail(Long id, String username, String password, UserRole userRole, Collection<? extends GrantedAuthority> authorities) {
         this.username = username;
-        this.token = token;
         this.id = id;
         this.authorities = authorities;
+        this.password = password;
+        this.userRole = userRole;
+    }
+
+    public UserRole getUserRole() {
+        return userRole;
     }
 
     @Override
@@ -26,7 +33,11 @@ public class UserDetail implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
@@ -54,12 +65,7 @@ public class UserDetail implements UserDetails {
         return true;
     }
 
-    public String getToken() {
-        return token;
-    }
-
     public Long getId() {
         return id;
     }
 }
-

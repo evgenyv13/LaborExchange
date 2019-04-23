@@ -14,7 +14,7 @@ public class TasksDto {
     private Long id;
     private String name;
     private String description;
-    private int progress;
+    private Integer progress;
     private float paymentPercent;
     private String category;
     private String skills;
@@ -24,9 +24,6 @@ public class TasksDto {
     private ProjectDto project;
     private UserDto userAccepteed;
     private List<TaskReplyDto> replyingTasks;
-/*
-    private LocalDate creatingDate;
-*/
 
     public TasksDto(Tasks tasks) {
         this.id = tasks.getId();

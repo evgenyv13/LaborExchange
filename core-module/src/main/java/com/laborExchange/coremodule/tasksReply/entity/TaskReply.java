@@ -5,7 +5,6 @@ import com.laborExchange.coremodule.user.entity.User;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 @Entity

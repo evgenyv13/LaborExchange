@@ -5,6 +5,7 @@ import com.laborExchange.coremodule.project.entity.Project;
 import com.laborExchange.coremodule.projectOwners.ProjectOwners;
 import com.laborExchange.coremodule.tasks.entity.Tasks;
 import com.laborExchange.coremodule.tasksReply.entity.TaskReply;
+import com.laborExchange.coremodule.tokenSellsHistory.entity.TokenSellsHistory;
 import com.laborExchange.coremodule.user.userFields.education.Education;
 import com.laborExchange.coremodule.user.userFields.languageLevel.LanguageLevel;
 import com.laborExchange.coremodule.user.userFields.userSkill.UserSkill;
@@ -19,13 +20,12 @@ import java.util.List;
 @Data
 @Table(name = "users")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Size(min = 5, max = 20)
+    @Size(min = 5, max = 45)
     private String username;
-    @Size(min = 5, max = 100)
+    @Size(min = 5, max = 255)
     private String password;
     private String mail;
     private String website;
@@ -45,6 +45,12 @@ public class User {
     private String youtube;
     @Size(max=200)
     private String aboutMe;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "seller") /*Token Transaction history where user sell*/
+    private List<TokenSellsHistory> sellerHistory;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "buyer") /*Token Transaction history where user buy*/
+    private List<TokenSellsHistory> buyerHistory;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user") /*Experience of company work*/
     private List<WorkExperience> userWorkExperience;
@@ -83,6 +89,13 @@ public class User {
 
     public User() {
     }
+
+    public User(Long id,@Size(min = 5, max = 20) String username, UserRole userRole) {
+        this.id = id;
+        this.username = username;
+        this.userRole = userRole;
+    }
+
 
     public User(@Size(min = 3, max = 50) String email, @Size(min = 5, max = 100) String password) {
         this.password = password;

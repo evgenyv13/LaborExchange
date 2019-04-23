@@ -1,6 +1,5 @@
 package com.laborExchange.coremodule.project.projectFields.categoryLists;
 
-
 import lombok.Data;
 
 import javax.persistence.*;
@@ -16,7 +15,7 @@ public class ProjectSubCategoryEnum {
     @Size(max = 20)
     private String subcategoryName;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "category_id", nullable = false)
     private ProjectCategoryEnum category;
 }

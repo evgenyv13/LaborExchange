@@ -1,7 +1,6 @@
 package com.laborExchange.coremodule.projectOwners;
 
 import com.laborExchange.coremodule.project.entity.Project;
-import com.laborExchange.coremodule.tasks.entity.Tasks;
 import com.laborExchange.coremodule.user.entity.User;
 import lombok.Data;
 
@@ -19,9 +18,21 @@ public class ProjectOwners {
     @JoinColumn(name = "user_id")
     private User user;
 
+    private float freeToSellToken;
+    private float freeToSellPerTokenPrice;
+
     private float percent;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id")
     private Project project;
+
+    public ProjectOwners(User user, float percent, Project project) {
+        this.user = user;
+        this.percent = percent;
+        this.project = project;
+    }
+
+    public ProjectOwners() {
+    }
 }

@@ -1,11 +1,9 @@
 package com.laborExchange.coremodule.commentary.dto;
 
 import com.laborExchange.coremodule.commentary.entity.Comment;
-import com.laborExchange.coremodule.user.dto.UserDto;
 import com.laborExchange.coremodule.user.dto.UserDtoComment;
 import lombok.Data;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
 @Data

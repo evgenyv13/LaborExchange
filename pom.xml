@@ -20,4 +20,14 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-core</artifactId>
+                <version>3.6.2</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
 </project>

@@ -3,9 +3,9 @@ package com.laborExchange.coremodule.tasksReply.dto;
 import com.laborExchange.coremodule.tasks.dto.TasksDto;
 import com.laborExchange.coremodule.tasksReply.entity.TaskReply;
 import com.laborExchange.coremodule.user.dto.UserDto;
+
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data

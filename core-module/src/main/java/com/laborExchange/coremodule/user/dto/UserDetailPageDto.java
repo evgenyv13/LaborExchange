@@ -5,7 +5,6 @@ import com.laborExchange.coremodule.user.entity.User;
 import com.laborExchange.coremodule.user.entity.UserRole;
 import com.laborExchange.coremodule.user.userFields.education.EducationDto;
 import com.laborExchange.coremodule.user.userFields.languageLevel.LanguageLevelDto;
-import com.laborExchange.coremodule.user.userFields.userSkill.UserSkill;
 import com.laborExchange.coremodule.user.userFields.userSkill.UserSkillDto;
 import com.laborExchange.coremodule.user.userFields.workExperience.WorkExperienceDto;
 import lombok.Data;
@@ -48,9 +47,9 @@ public class UserDetailPageDto {
         this.youtube = user.getYoutube();
         this.aboutMe = user.getAboutMe();
 
-        this.workExperiences = Odt.convertLists(user.getUserWorkExperience(),item ->new WorkExperienceDto(item));
-        this.educations = Odt.convertLists(user.getEducations(),item ->new EducationDto(item));
-        this.languageLevels = Odt.convertLists(user.getLanguageLevels(),item ->new LanguageLevelDto(item));
-        this.userSkills = Odt.convertLists(user.getUserSkills(),item ->new UserSkillDto(item));
+        this.workExperiences = Odt.convertLists(user.getUserWorkExperience(), WorkExperienceDto::new);
+        this.educations = Odt.convertLists(user.getEducations(), EducationDto::new);
+        this.languageLevels = Odt.convertLists(user.getLanguageLevels(), LanguageLevelDto::new);
+        this.userSkills = Odt.convertLists(user.getUserSkills(), UserSkillDto::new);
     }
 }

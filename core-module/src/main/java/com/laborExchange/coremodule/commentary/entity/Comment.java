@@ -31,7 +31,7 @@ public class Comment {
 
     public static Map<String, Object> toMap(CommentDto commentDto) {
         ObjectMapper oMapper = new ObjectMapper();
-        Map<java.lang.String, java.lang.Object> map = oMapper.convertValue(commentDto, Map.class);
+        Map<String, Object> map = oMapper.convertValue(commentDto, Map.class);
         return map;
     }
 

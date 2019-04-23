@@ -3,6 +3,7 @@ package com.laborExchange.coremodule.project.entity;
 import com.laborExchange.coremodule.project.projectFields.ProjectSubCategory;
 import com.laborExchange.coremodule.projectOwners.ProjectOwners;
 import com.laborExchange.coremodule.tasks.entity.Tasks;
+import com.laborExchange.coremodule.tokenSellsHistory.entity.TokenSellsHistory;
 import com.laborExchange.coremodule.user.entity.User;
 import lombok.Data;
 
@@ -19,44 +20,38 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    @Size(max = 255)
+    @Size(max = 400)
     private String description;
     private String contacts;
     private Timestamp creatingDate;
 
-    @Size(max = 60)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project") /*Token Transaction history where user buy*/
+    private List<TokenSellsHistory> transactionsHistory;
+
+    private float freezeToken;
+
+    @Size(max = 30)
     private String linkedin;
     @Size(max = 60)
     private String gmail;
-    @Size(max = 60)
+    @Size(max = 30)
     private String twitter;
-    @Size(max = 60)
+    @Size(max = 30)
     private String github;
-    @Size(max = 60)
+    @Size(max = 30)
     private String youtube;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "project_owner", nullable = false)
     private User projectOwner;
 
-/*    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "project_owners",
-            joinColumns = @JoinColumn(name = "project_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id")
-    )
-    private List<User> percentedOwnersProject;*/
-
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
     private List<ProjectOwners> percentedOwnersProject;
-
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "project_category", nullable = false)
-//    private Category projectCategory;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
     private List<Tasks> projectTasks;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "project")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "project")
     private List<ProjectSubCategory> projectSubCategories;
 
     @Override
@@ -69,6 +64,5 @@ public class Project {
                 ", creatingDate=" + creatingDate +
                 '}';
     }
-
 
 }

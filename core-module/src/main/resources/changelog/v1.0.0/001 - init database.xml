@@ -1,0 +1,22 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <changeSet author="Yauheni.Verameyenka" id="Yauheni.Verameyenka-001 - init structure" context="dev or prod">
+        <sqlFile dbms="mysql"
+                 encoding="utf8"
+                 path="001 - init structure.sql"
+                 relativeToChangelogFile="true"
+                 stripComments="true"/>
+    </changeSet>
+
+    <changeSet author="Yauheni.Verameyenka" id="Yauheni.Verameyenka-001 - init testData" context="dev">
+        <sqlFile dbms="mysql"
+                 encoding="utf8"
+                 path="001 - init testData.sql"
+                 relativeToChangelogFile="true"
+                 stripComments="true"/>
+    </changeSet>
+
+</databaseChangeLog>

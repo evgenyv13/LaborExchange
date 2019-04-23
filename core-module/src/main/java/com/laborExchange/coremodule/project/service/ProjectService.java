@@ -1,109 +1,50 @@
 package com.laborExchange.coremodule.project.service;
 
-import com.laborExchange.coremodule.odt.Odt;
 import com.laborExchange.coremodule.project.dto.ProjectDto;
 import com.laborExchange.coremodule.project.entity.Project;
-import com.laborExchange.coremodule.project.projectFields.ProjectSubCategory;
-import com.laborExchange.coremodule.project.projectFields.ProjectSubCategoryControllerDto;
 import com.laborExchange.coremodule.project.projectFields.ProjectSubCategoryDto;
-import com.laborExchange.coremodule.project.projectFields.ProjectSubCategoryRepository;
-import com.laborExchange.coremodule.project.projectFields.categoryLists.ProjectSubCategoryEnum;
-import com.laborExchange.coremodule.project.projectFields.categoryLists.ProjectSubCategoryEnumRepository;
-import com.laborExchange.coremodule.project.repository.ProjectRepository;
-import com.laborExchange.coremodule.projectOwners.ProjectOwnersRepository;
-import com.laborExchange.coremodule.user.dto.UserDto;
+import com.laborExchange.coremodule.projectOwners.ProjectOwners;
+import com.laborExchange.coremodule.projectOwners.ProjectOwnersDto;
+import com.laborExchange.coremodule.projectOwners.dto.ProjectOwnersMinimalDto;
 import com.laborExchange.coremodule.user.entity.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Service;
+import org.springframework.data.domain.Pageable;
 
-import java.sql.Timestamp;
-import java.util.Optional;
+import javax.transaction.Transactional;
 
-@Service
-public class ProjectService {
-    @Autowired
-    private ProjectRepository projectRepository;
-    @Autowired
-    private ProjectSubCategoryEnumRepository projectSubCategoryEnumRepository;
-    @Autowired
-    private ProjectSubCategoryRepository projectSubCategoryRepository;
-    @Autowired
-    private ProjectOwnersRepository projectOwnersRepository;
+public interface ProjectService {
+    Page<Project> getUserProjectsByPage(User user, Pageable pageable);
 
-    private final int NUMBER_OF_PROJECTS_ON_PAGE = 8;
+    Project findById(Long projectId);
 
+    Project getProjectById(String projectId);
 
+    ProjectDto getProjectDtoByProjectId(String projectId);
 
-    public Page<Project> getProjectsByPage(int pageId) {
-        return projectRepository.findAll(PageRequest.of(pageId - 1, NUMBER_OF_PROJECTS_ON_PAGE));
-    }
+    @Transactional
+    Project createProject(Project project, User user);
 
-    public Page<Project> getUserProjectsByPage(User user, int pageId) {
-        return projectRepository.findAllByProjectOwner(user, PageRequest.of(pageId - 1, NUMBER_OF_PROJECTS_ON_PAGE));
-    }
+    Project updateProjectInfo(Long project, Project newProject, Long currentUserId);
 
-    public Project getProjectById(String projectId) {
-        Long projectIdL = Long.parseLong(projectId);
-        Optional<Project> project = projectRepository.findById(projectIdL);
-        return project.get();
-    }
+    Page<Project> getPartnershipProjectsByPage(Pageable pageable, User user);
 
-    public ProjectDto getProjectDtoByProjectId(String projectId) {
-        Long projectIdL = Long.parseLong(projectId);
-        Optional<Project> project = projectRepository.findById(projectIdL);
-        if (!project.isPresent()) return null;
-        ProjectDto projectDto = new ProjectDto(project.get());
-        projectDto.setProjectOwner(new UserDto(project.get().getProjectOwner()));
-        return projectDto;
-    }
+    ProjectSubCategoryDto addProjectSubCategory(Long projectId, Long projectSubCategoryId, Long userId);
 
-    public Project createProject(Project project, User user) {
-        if (project == null) return null;
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        project.setCreatingDate(timestamp);
-        project.setProjectOwner(user);
-        return projectRepository.save(project);
-    }
+    Boolean deleteProjectSubCategory(Long projectId, Long subCategoryId, Long user);
 
-    public Project updateProjectInfo(Project project, Project newProject) {
-        if(newProject.getContacts()!=null) project.setContacts(newProject.getContacts());
-        if(newProject.getDescription()!=null) project.setDescription(newProject.getDescription());
-        if(newProject.getName()!=null) project.setName(newProject.getName());
-        if(newProject.getLinkedin()!=null) project.setLinkedin(newProject.getLinkedin());
-        if(newProject.getGithub()!=null) project.setGithub(newProject.getGithub());
-        if(newProject.getGmail()!=null) project.setGmail(newProject.getGmail());
-        if(newProject.getTwitter()!=null) project.setTwitter(newProject.getTwitter());
-        if(newProject.getYoutube()!=null) project.setYoutube(newProject.getYoutube());
-        return projectRepository.save(project);
-    }
+    @Transactional
+    ProjectOwners putUpTokensForSale(Project project, User user, float percents);
 
-    public Page<Project> getPartnershipProjectsByPage(int pageId, User user) {
-        return projectRepository.findPartnershipProjectsByUserAndPage(user.getId(), PageRequest.of(pageId - 1, NUMBER_OF_PROJECTS_ON_PAGE));
-    }
+    @Transactional
+    ProjectOwners getUpTokensFromSale(Project project, User user, float percents);
 
-    public ProjectSubCategoryDto addProjectSubCategory(ProjectSubCategoryControllerDto projectSubCategoryControllerDto,User user){
-        Optional<Project> project = projectRepository.findById(projectSubCategoryControllerDto.getProjectId());
-        Optional<ProjectSubCategoryEnum> projectSubCategoryEnum = projectSubCategoryEnumRepository.findById(projectSubCategoryControllerDto.getIdOfProjectSubCategory());
+    @Transactional
+    ProjectOwners setTokenPrice(Project project, User user, float tokenPrice);
 
-        if(!project.isPresent() || !projectSubCategoryEnum.isPresent() || user==null || project.get().getProjectOwner().getId()!=user.getId()) return null;
+    @Transactional
+    Page<ProjectOwnersMinimalDto> getTokenSellsByProject(Project project, Pageable pageable);
 
-        ProjectSubCategory projectSubCategory = new ProjectSubCategory();
-        projectSubCategory.setProject(project.get());
-        projectSubCategory.setProjectSubCategoryEnum(projectSubCategoryEnum.get());
+    Page<Project> findAllProjectsByPageLoadSubCategories(Pageable pageable);
 
-        ProjectSubCategory projectSubCategoryReturn = projectSubCategoryRepository.save(projectSubCategory);
-        ProjectSubCategoryDto projectSubCategoryDto = new ProjectSubCategoryDto(projectSubCategoryReturn);
-
-        return projectSubCategoryDto;
-    }
-
-    public Boolean deleteProjectSubCategory(String subCategoryId, User user) {
-        Optional<ProjectSubCategory> projectSubCategory = projectSubCategoryRepository.findById(Long.valueOf(subCategoryId));
-        if(!projectSubCategory.isPresent() || user==null || projectSubCategory.get().getProject().getProjectOwner().getId()!=user.getId()) return false;
-
-        projectSubCategoryRepository.delete(projectSubCategory.get());
-        return true;
-    }
+    Page<ProjectOwnersDto> getProjectPartnersList(Long projectId, Long userId, Pageable pageable);
 }

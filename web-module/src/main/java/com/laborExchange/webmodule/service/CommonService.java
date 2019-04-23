@@ -1,35 +1,37 @@
 package com.laborExchange.webmodule.service;
 
+import com.laborExchange.coremodule.common.exception.EntityNotFoundCustomException;
 import com.laborExchange.coremodule.user.entity.User;
 import com.laborExchange.coremodule.user.repository.UserRepository;
+import com.laborExchange.webmodule.config.JwtAuthenticationImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.function.Function;
-import java.util.stream.Collectors;
-
 @Service
 public class CommonService {
+    private final UserRepository userRepository;
+
     @Autowired
-    private UserRepository userRepository;
+    public CommonService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public User getCurrentUser(){
-        String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        User userByName = userRepository.findUserByUsername(name);
-        return userByName;
+        JwtAuthenticationImpl jwtAuthentication = (JwtAuthenticationImpl)SecurityContextHolder.getContext().getAuthentication();
+        User userById = userRepository.findById(jwtAuthentication.getUserId()).orElseThrow(()->new EntityNotFoundCustomException("User Token contains invalid user id"));
+        return userById;
     }
 
-    public static Object getSingleObjectFromList(List list){
-        Object object;
-        try{
-            object = list.get(0);
-        }catch (ArrayIndexOutOfBoundsException e){
-            object = null;
-        }
-        return object;
+    public User getCurrentUserRef(){
+        JwtAuthenticationImpl jwtAuthentication = (JwtAuthenticationImpl)SecurityContextHolder.getContext().getAuthentication();
+        Long userId = jwtAuthentication.getUserId();
+        User userById = userRepository.getOne(userId);
+        return userById;
     }
-
-
+    public Long getCurrentUserId(){
+        JwtAuthenticationImpl jwtAuthentication = (JwtAuthenticationImpl)SecurityContextHolder.getContext().getAuthentication();
+        Long userId = jwtAuthentication.getUserId();
+        return userId;
+    }
 }

@@ -7,10 +7,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Data
@@ -19,12 +17,15 @@ public class Tasks {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Size(max = 60)
     private String name;
-    @Size(max = 45)
+    @Size(max = 400)
     private String description;
-    private int progress;
+    private Integer progress;
     private float paymentPercent;
+    @Size(max = 45)
     private String category;
+    @Size(max = 45)
     private String skills;
     private Timestamp creatingDate;
     private Boolean done;
@@ -40,7 +41,9 @@ public class Tasks {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "task")
     private List<TaskReply> replyingTasks;
 
+
     /*    private java.sql.Date creatingDate;*/
+
 
     @Override
     public String toString() {

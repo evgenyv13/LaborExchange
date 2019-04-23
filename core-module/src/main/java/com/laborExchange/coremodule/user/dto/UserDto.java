@@ -23,8 +23,7 @@ public class UserDto {
     private String twitter;
     private String github;
     private String youtube;
-/*        List<CommentDto> orderDtoCalendars = Odt.convertLists(comments, item -> new CommentDto(item));
- */
+
     private List<ProjectDto> ownedMainProject;
     private List<TasksDto> myTasks;
     private List<ProjectDto> percentedOwnedProjects;

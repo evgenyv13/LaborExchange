@@ -7,7 +7,6 @@ import com.laborExchange.coremodule.tasks.dto.TasksDto;
 import com.laborExchange.coremodule.user.dto.UserDto;
 import lombok.Data;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -42,6 +41,6 @@ public class ProjectDto {
         this.github = project.getGithub();
         this.youtube = project.getYoutube();
         if (project.getCreatingDate() != null) this.creatingDate = project.getCreatingDate().toLocalDateTime();
-        this.projectSubCategorys = Odt.convertLists(project.getProjectSubCategories(), item ->new ProjectSubCategoryDto(item));
+        this.projectSubCategorys = Odt.convertLists(project.getProjectSubCategories(), ProjectSubCategoryDto::new);
     }
 }
