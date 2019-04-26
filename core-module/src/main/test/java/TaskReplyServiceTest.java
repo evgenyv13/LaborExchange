@@ -1,4 +1,3 @@
-/*
 package java;
 
 
@@ -24,4 +23,4 @@ public class TaskReplyServiceTest {
         assertEquals(errorMessage, findedTaskReply.getDescription(), firstTaskReplyDescription);
     }
 }
-*/
+
