@@ -6,3 +6,4 @@
 - [Архитектура](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/Architecture.md).
 - [Парное программирование](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/pair-programming.md).
 - [Технический долг](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/tech-debt.md).
+- [Улучшение UX](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/ImprovementUX.md)
