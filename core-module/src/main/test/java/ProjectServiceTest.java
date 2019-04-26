@@ -1,4 +1,3 @@
-/*
 package java;
 
 
@@ -35,4 +34,4 @@ public class ProjectServiceTest {
         assertEquals(errorMessage, dto.getName(), firstProjectName);
     }
 }
-*/
+
