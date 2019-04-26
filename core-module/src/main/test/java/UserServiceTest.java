@@ -1,4 +1,3 @@
-/*
 package java;
 
 import com.laborExchange.coremodule.user.service.UserService;
@@ -34,4 +33,3 @@ public class UserServiceTest {
         assertEquals(errorMessage, findedUser.getUsername(), username);
     }
 }
-*/
