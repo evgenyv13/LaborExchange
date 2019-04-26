@@ -1,4 +1,3 @@
-/*
 package java;
 
 import com.laborExchange.coremodule.tasks.dto.TasksDto;
@@ -23,4 +22,3 @@ public class TaskServiceTest {
         assertEquals(errorMessage, findedTask.getDescription(), firstTaskDescription);
     }
 }
-*/
