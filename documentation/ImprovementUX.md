@@ -34,3 +34,19 @@
 - [Вынесение отправки сообщений в модальное окно](https://trello.com/c/1XXeanBQ/78-%D0%BA%D0%B0%D0%BA-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C-%D1%8F-%D1%85%D0%BE%D1%87%D1%83-%D0%B8%D0%BC%D0%B5%D1%82%D1%8C-%D0%BC%D0%BE%D0%B4%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5-%D0%BE%D0%BA%D0%BD%D0%BE-%D0%B4%D0%BB%D1%8F-%D0%BE%D1%82%D0%BF%D1%80%D0%B0%D0%B2%D0%BA%D0%B8-%D1%81%D0%BE%D0%BE%D0%B1%D1%89%D0%B5%D0%BD%D0%B8%D0%B9-%D0%B4%D0%BB%D1%8F-%D1%82%D0%BE%D0%B3%D0%BE-%D1%87%D1%82%D0%BE%D0%B1%D1%8B-%D1%83%D0%B4%D0%BE%D0%B1%D0%BD%D0%BE-%D1%81%D0%BE%D1%81%D1%82%D0%B0%D0%B2%D0%BB%D1%8F%D1%82%D1%8C-%D0%B7%D0%B0%D0%BF%D1%80%D0%BE%D1%81-%D0%BD%D0%B0-%D0%B2%D1%8B%D0%BF%D0%BE%D0%BB%D0%BD%D0%B5%D0%BD%D0%B8%D0%B5-%D0%B7%D0%B0%D0%B4%D0%B0%D1%87%D0%B8)
 - [Исправить Header](https://trello.com/c/wcqAyCU8/76-1-%D0%BA%D0%B0%D0%BA-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C-%D1%8F-%D1%85%D0%BE%D1%87%D1%83-%D0%B8%D0%BC%D0%B5%D1%82%D1%8C-header-%D0%B2-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D0%BE%D0%BC-%D0%B2%D1%81%D0%B5-%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B8-%D0%B1%D1%83%D0%B4%D1%83%D1%82-%D0%BB%D0%BE%D0%B3%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B8-%D1%80%D0%B0%D0%B7%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D1%8B-%D1%87%D1%82%D0%BE%D0%B1%D1%8B-%D0%B1%D0%B5%D0%B7-%D1%82%D1%80%D1%83%D0%B4%D0%B0-%D0%BD%D0%B0%D0%B9%D1%82%D0%B8-%D0%BD%D1%83%D0%B6%D0%BD%D1%83%D1%8E-%D0%BC%D0%BD%D0%B5-%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D1%83)
 - [Исправить Search](https://trello.com/c/fKt0YjwN/79-3%D0%BA%D0%B0%D0%BA-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C-%D0%BF%D1%80%D0%BE%D0%B5%D0%BA%D1%82%D0%B0-%D1%8F-%D1%85%D0%BE%D1%87%D1%83-%D0%B8%D0%BC%D0%B5%D1%82%D1%8C-%D0%B2%D0%BE%D0%B7%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D1%8C-%D0%B2%D1%8B%D0%B1%D1%80%D0%B0%D1%82%D1%8C-%D0%BF%D0%B0%D1%80%D0%B0%D0%BC%D0%B5%D1%82%D1%80%D1%8B-%D0%BF%D0%BE-%D0%BA%D0%BE%D1%82%D0%BE%D1%80%D1%8B%D0%BC-%D0%BE%D1%81%D1%83%D1%89%D0%B5%D1%81%D1%82%D0%B2%D0%BB%D1%8F%D1%82%D1%8C-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D0%B4%D0%BB%D1%8F-%D1%82%D0%BE%D0%B3%D0%BE-%D1%87%D1%82%D0%BE%D0%B1%D1%8B-%D0%B1%D1%8B%D1%81%D1%82%D1%80%D0%B5%D0%B5-%D0%BD%D0%B0%D0%B9%D1%82%D0%B8)
+
+## Modal
+### До
+![Страница отправки запроса](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/requestPage.JPG) 
+### После
+![Модальное окно](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/modal.jpg) 
+## Выбор пункта "Projects" в заголовке сайта
+### До
+![Header до](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/header.jpg)  
+### После
+![Header после](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/newHeader.jpg)  
+## Меню поиска и отображение списка задач
+### До
+![Меняю поиска до](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/search.jpg)  
+### После
+![Меню поиска после](https://github.com/evgenyv13/LaborExchange/blob/master/documentation/newSearch.jpg)  
